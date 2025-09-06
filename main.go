@@ -29,7 +29,7 @@ func main() {
 		libp2p.ListenAddrStrings(listen),
 	)
 	if err != nil {
-		log.Fatalf("libp2p new error: %v", err)
+		log.Fatalf("libp2p new errorty: %v", err)
 	}
 
 	// Turn this node into a Relay v2 hop
@@ -40,7 +40,7 @@ func main() {
 
 	// Log peer id and suggested public multiaddr (Render terminates TLS at 443,
 	// so clients should dial wss at tcp/443 even though we listen on ws)
-	log.Printf("Relay Peer ID: %s\n", h.ID().Pretty())
+	log.Printf("Relay Peer ID: %s\n", h.ID().String())
 
 	// Render provides the external hostname in the dashboard. After deploy,
 	// build the dialable multiaddr using your render subdomain:
@@ -57,7 +57,7 @@ func main() {
 		_, _ = w.Write([]byte("ok"))
 	})
 	mux.HandleFunc("/peerid", func(w http.ResponseWriter, _ *http.Request) {
-		_, _ = w.Write([]byte(h.ID().Pretty()))
+		_, _ = w.Write([]byte(h.ID().String()))
 	})
 
 	// Run HTTP server on $PORT in background so the program does not exit.
