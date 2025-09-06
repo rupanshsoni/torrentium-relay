@@ -77,7 +77,7 @@ func main() {
 	// Internal WS port for libp2p (must NOT be $PORT on Render). Use an env var if you want to change this.
 	libp2pPort := os.Getenv("LIBP2P_WS_PORT")
 	if libp2pPort == "" {
-		libp2pPort = "10000"
+		libp2pPort = "10001"
 	}
 
 	// Get the Render external hostname. On Render this is set automatically to e.g. torrentium-relay-1.onrender.com
